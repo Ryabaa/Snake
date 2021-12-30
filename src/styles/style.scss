@@ -1,0 +1,33 @@
+@mixin slowTrans {
+    transition: all 0.3s ease;
+}
+
+html {
+    user-select: none;
+    scroll-behavior: smooth;
+}
+
+* {
+    font-size: 12px;
+    margin: 0;
+    font-weight: normal;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: Comfortaa;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    cursor: pointer;
+    border: 0;
+    background: none;
+    outline: none;
+}
+input {
+    border: 0;
+    outline: none;
+}
+
+body {
+    background-color: #292929;
+}
