@@ -1,6 +1,7 @@
 import React from "react";
-import Field from "./Game/Field.jsx";
+
+import Game from "./Game.jsx";
 
 export default function App() {
-    return <Field />;
+    return <Game />;
 }

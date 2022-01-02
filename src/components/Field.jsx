@@ -1,23 +1,25 @@
 import React, { useRef, useEffect } from "react";
 
-function Field() {
+function Field({ incrementScore }) {
     const canvasRef = useRef(null);
 
     const updateCanvas = () => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
 
-        for (var x = 0.5; x < 400; x += 10) {
+        ctx.fillStyle = "#c7a7e7";
+        ctx.fillRect(0, 0, 360, 360);
+
+        for (let x = 30; x < 360; x += 30) {
             ctx.moveTo(x, 0);
-            ctx.lineTo(x, 400);
+            ctx.lineTo(x, 360);
         }
-
-        for (var y = 0.5; y < 400; y += 10) {
+        for (let y = 30; y < 360; y += 30) {
             ctx.moveTo(0, y);
-            ctx.lineTo(400, y);
+            ctx.lineTo(360, y);
         }
 
-        ctx.strokeStyle = "#888";
+        ctx.strokeStyle = "#5d346d";
         ctx.stroke();
     };
 
@@ -27,7 +29,7 @@ function Field() {
 
     return (
         <>
-            <canvas ref={canvasRef} className="canvas"></canvas>
+            <canvas width="360px" height="360px" ref={canvasRef} className="field"></canvas>
         </>
     );
 }
