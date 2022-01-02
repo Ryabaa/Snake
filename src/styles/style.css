@@ -30,6 +30,37 @@ input {
 }
 
 body {
-  background-color: #292929;
+  background-color: #725291;
+}
+
+.game {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #5d346d;
+  width: 60%;
+  height: 93%;
+  border-radius: 20px;
+  left: 50%;
+  top: 50%;
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.score {
+  width: 200px;
+  height: 60px;
+  background-color: #725291;
 }
 /*# sourceMappingURL=style.css.map */
