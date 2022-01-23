@@ -1,7 +1,7 @@
 import React from "react";
 
-import Game from "./Game.jsx";
+import Main from "./Main.jsx";
 
 export default function App() {
-    return <Game />;
+    return <Main />;
 }

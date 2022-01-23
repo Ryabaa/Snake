@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Comfortaa:300,regular,500,600,700);
+
 @mixin slowTrans {
     transition: all 0.3s ease;
 }
@@ -8,7 +10,7 @@ html {
 }
 
 * {
-    font-family: Arial;
+    font-family: Comfortaa;
     font-size: 12px;
     margin: 0;
     font-weight: normal;
@@ -29,7 +31,76 @@ input {
 }
 
 body {
-    background-color: #263445;
+    background-color: #1c222b;
+}
+
+.start {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 80px;
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    &__play-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        row-gap: 20px;
+        cursor: pointer;
+    }
+    &__icon {
+        width: 200px;
+        height: 200px;
+        color: #fff;
+    }
+    &__text {
+        color: #fff;
+        font-size: 80px;
+    }
+
+    &__options-container {
+        display: flex;
+        flex-direction: column;
+        row-gap: 60px;
+    }
+}
+
+.option-card {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    &__text {
+        color: #fff;
+        font-size: 30px;
+    }
+    &__line {
+        width: auto;
+        height: 3px;
+        background: #ffffff8a;
+        border-radius: 20px;
+    }
+    &__menu {
+        display: flex;
+        column-gap: 10px;
+    }
+    &__button {
+        color: #fff;
+        border: solid 2px #fff;
+        border-radius: 15px;
+        font-size: 18px;
+        padding: 10px;
+        &:hover {
+            background: #fff;
+            color: #4e4e4e;
+        }
+        &_active {
+            background: #fff;
+            color: #4e4e4e;
+        }
+    }
 }
 
 .wrapper {
@@ -37,9 +108,9 @@ body {
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
-    background-color: #1f2836;
+    background-color: #171c24;
     width: 60%;
-    height: 93%;
+    height: 97%;
     border-radius: 20px;
     left: 50%;
     top: 50%;
@@ -47,19 +118,25 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.game {
-    border-radius: 5px;
-    border: 2px solid #ebf2fa;
-}
-
-.score {
-    width: 250px;
+.info {
     height: 70px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    column-gap: 20%;
+    &__container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
     &__text {
-        color: #f0faeb;
+        color: #e63946;
+        font-size: 30px;
+        border-bottom: solid 3px #e2e2e2;
+        line-height: 60px;
+    }
+    &__value {
+        color: #e2e2e2;
         font-size: 40px;
+        margin-top: 15px;
     }
 }

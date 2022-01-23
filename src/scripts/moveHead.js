@@ -1,4 +1,6 @@
-function moveHead(x, y, direction, setSnakeHead) {
+function moveHead(snakeHead, direction, setSnakeHead, fieldWidth, fieldHeight) {
+    let { x, y } = snakeHead;
+
     switch (direction) {
         case "up":
             y -= 1;
@@ -18,11 +20,11 @@ function moveHead(x, y, direction, setSnakeHead) {
     }
 
     switch (x) {
-        case 14:
+        case fieldWidth:
             x = 0;
             break;
         case -1:
-            x = 14;
+            x = fieldWidth;
             break;
 
         default:
@@ -30,11 +32,11 @@ function moveHead(x, y, direction, setSnakeHead) {
     }
 
     switch (y) {
-        case 14:
+        case fieldHeight:
             y = 0;
             break;
         case -1:
-            y = 14;
+            y = fieldHeight;
             break;
 
         default:

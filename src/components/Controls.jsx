@@ -2,18 +2,10 @@ import React from "react";
 
 function Controls({ direction, setDirection }) {
     const handleKeyDown = (event, direction) => {
-        const keys = [
-            { name: "w", value: "up" },
-            { name: "a", value: "left" },
-            { name: "s", value: "down" },
-            { name: "d", value: "right" },
-        ];
-
-        keys.forEach((key) => {
-            if (key.name === event.key) {
-                direction = key.value;
-            }
-        });
+        if (event.key === "w" && direction !== "down") direction = "up";
+        if (event.key === "a" && direction !== "right") direction = "left";
+        if (event.key === "s" && direction !== "up") direction = "down";
+        if (event.key === "d" && direction !== "left") direction = "right";
 
         setDirection(direction);
     };
