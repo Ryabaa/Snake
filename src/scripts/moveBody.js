@@ -1,4 +1,4 @@
-function moveBody(snakeHead, snakeBody, setSnakeBody) {
+function moveBody(snakeHead, snakeBody, setSnakeBody, setGameState) {
     if (snakeBody.length !== 0) {
         let newSnakeBody = snakeBody.map((piece, i) => {
             if (i === snakeBody.length - 1) {
@@ -11,7 +11,7 @@ function moveBody(snakeHead, snakeBody, setSnakeBody) {
 
         snakeBody.forEach((piece) => {
             if (snakeHead.y === piece.y && snakeHead.x === piece.x) {
-                console.log(1);
+                setGameState("end");
             }
         });
     }

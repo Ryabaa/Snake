@@ -1,4 +1,4 @@
-function moveHead(snakeHead, direction, setSnakeHead, fieldWidth, fieldHeight) {
+function moveHead(snakeHead, direction, setSnakeHead, fieldWidth, fieldHeight, difficulty, setGameState) {
     let { x, y } = snakeHead;
 
     switch (direction) {
@@ -21,24 +21,22 @@ function moveHead(snakeHead, direction, setSnakeHead, fieldWidth, fieldHeight) {
 
     switch (x) {
         case fieldWidth:
-            x = 0;
+            difficulty === "Easy" ? (x = 0) : setGameState("end");
             break;
         case -1:
-            x = fieldWidth;
+            difficulty === "Easy" ? (x = fieldWidth - 1) : setGameState("end");
             break;
-
         default:
             break;
     }
 
     switch (y) {
         case fieldHeight:
-            y = 0;
+            difficulty === "Easy" ? (y = 0) : setGameState("end");
             break;
         case -1:
-            y = fieldHeight;
+            difficulty === "Easy" ? (y = fieldHeight - 1) : setGameState("end");
             break;
-
         default:
             break;
     }

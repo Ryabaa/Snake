@@ -1,56 +1,21 @@
-function drawField(setField, snakeHead, snakeBody, scorePosition) {
-    let newField = [
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    ];
+function drawField(initialField, setField, snakeHead, snakeBody, scorePosition, fieldWidth, fieldHeight) {
+    let newField = initialField;
+
+    newField[scorePosition.y][scorePosition.x] = 3;
 
     newField.forEach((row, y) => {
-        if (y === scorePosition.y) {
-            row.forEach((piece, x) => {
-                if (x === scorePosition.x) {
-                    newField[y][x] = 3;
-                }
-            });
-        }
-
-        if (y === snakeHead.y) {
-            row.forEach((piece, x) => {
-                if (x === snakeHead.x) {
-                    newField[y][x] = 1;
-                }
-            });
-        }
-
-        if (snakeBody.length !== 0) {
-            snakeBody.forEach((piece, i) => {
-                if (y === piece.y) {
-                    row.forEach((el, x) => {
-                        if (x === piece.x) {
-                            newField[y][x] = 2;
-                        }
-                    });
-                }
-            });
-        }
+        snakeBody.forEach((piece, i) => {
+            if (y === piece.y) {
+                row.forEach((el, x) => {
+                    if (x === piece.x) {
+                        newField[y][x] = 2;
+                    }
+                });
+            }
+        });
     });
+
+    newField[snakeHead.y][snakeHead.x] = 1;
 
     setField(newField);
 }
