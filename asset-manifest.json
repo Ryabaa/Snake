@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Ryabaa/Snake/static/css/main.67833c29.css",
+    "main.js": "/Ryabaa/Snake/static/js/main.762d9c30.js",
+    "index.html": "/Ryabaa/Snake/index.html",
+    "main.67833c29.css.map": "/Ryabaa/Snake/static/css/main.67833c29.css.map",
+    "main.762d9c30.js.map": "/Ryabaa/Snake/static/js/main.762d9c30.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.67833c29.css",
+    "static/js/main.762d9c30.js"
+  ]
+}
