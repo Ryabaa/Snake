@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-import Game from "./Game.jsx";
 import StartGame from "./StartGame/StartGame.jsx";
-import EndGame from "./EndGame.jsx";
 import Loader from "./Loader.jsx";
+import Game from "./Game.jsx";
 import Info from "./Info.jsx";
-import Controls from "./Controls.jsx";
+import InfoBottom from "./InfoBottom.jsx";
+import Fullscreen from "./Fullscreen.jsx";
+import EndGame from "./EndGame.jsx";
 
 import moveHead from "../scripts/moveHead.js";
 import moveBody from "../scripts/moveBody.js";
@@ -22,11 +23,11 @@ const initialLoader = false;
 const initialGameState = "start";
 const initialDifficulty = "Easy";
 const initialUpdateTime = 500;
-const initialFieldWidth = 10;
-const initialFieldHeight = 10;
+const initialFieldWidth = 15;
+const initialFieldHeight = 15;
 const initialDirection = "right";
-const initialHead = { x: 0, y: 0 };
-const initialBody = [];
+const initialHead = { x: 1, y: 0 };
+const initialBody = [{ x: 0, y: 0 }];
 
 function Main() {
     const [gameState, setGameState] = useState(initialGameState);
@@ -76,7 +77,7 @@ function Main() {
     useEffect(() => {
         if (gameState === "game") {
             const gameUpdateInterval = setInterval(() => {
-                moveHead(snakeHead, direction, setSnakeHead, fieldWidth, fieldHeight, difficulty, setGameState);
+                moveHead(snakeHead, setDirection, direction, setSnakeHead, fieldWidth, fieldHeight, difficulty, setGameState);
                 takeScore(
                     updateTime,
                     setUpdateTime,
@@ -126,8 +127,9 @@ function Main() {
                                     scorePosition={scorePosition}
                                 />
                                 <Info difficulty={difficulty} score={score} updateTime={updateTime} />
+                                <InfoBottom difficulty={difficulty} resetTools={resetTools} initialStates={initialStates} />
+                                <Fullscreen />
                             </div>
-                            <Controls direction={direction} setDirection={setDirection} />
                         </div>
                     </>
                 )) ||

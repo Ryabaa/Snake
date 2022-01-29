@@ -28,8 +28,8 @@ function StartGame({
     const [fieldSizeButtons, setFieldSizeButtons] = useState(initialFieldSizeButtons);
 
     const handleChangeGameState = () => {
-        setGameState("game");
         setLoader(true);
+        setGameState("game");
     };
 
     const editButtons = useCallback(
@@ -74,6 +74,12 @@ function StartGame({
                             />
                         ))}
                     </div>
+                    <p className="option-card__description-title">Description: </p>
+                    <p className="option-card__description">
+                        {(difficulty === "Easy" && "No death from the walls, slow snake speed") ||
+                            (difficulty === "Medium" && "Death by the walls, medium snake speed") ||
+                            (difficulty === "Hard" && "Death by the walls, quick snake speed")}
+                    </p>
                 </div>
 
                 <div className="option-card">

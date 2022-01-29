@@ -4,7 +4,7 @@ function DifficultyButton({ button, buttonIndex, editButtons, difficulty, setDif
     const { value } = button;
 
     const handleChangeDifficulty = () => {
-        (value === "Easy" && setUpdateTime(500)) || (value === "Medium" && setUpdateTime(400)) || (value === "Hard" && setUpdateTime(300));
+        (value === "Easy" && setUpdateTime(500)) || (value === "Medium" && setUpdateTime(450)) || (value === "Hard" && setUpdateTime(400));
         setDifficulty(value);
         editButtons({ value: value }, buttonIndex, "Difficulty");
     };

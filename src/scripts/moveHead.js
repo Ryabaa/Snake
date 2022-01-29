@@ -1,44 +1,73 @@
-function moveHead(snakeHead, direction, setSnakeHead, fieldWidth, fieldHeight, difficulty, setGameState) {
+function moveHead(snakeHead, setDirection, direction, setSnakeHead, fieldWidth, fieldHeight, difficulty, setGameState) {
     let { x, y } = snakeHead;
 
-    switch (direction) {
-        case "up":
-            y -= 1;
-            break;
-        case "left":
-            x -= 1;
-            break;
-        case "down":
-            y += 1;
-            break;
-        case "right":
-            x += 1;
-            break;
+    const moveFunction = (direction) => {
+        switch (direction) {
+            case "up":
+                y -= 1;
+                break;
+            case "left":
+                x -= 1;
+                break;
+            case "down":
+                y += 1;
+                break;
+            case "right":
+                x += 1;
+                break;
 
-        default:
-            break;
-    }
+            default:
+                break;
+        }
+        return { x, y };
+    };
 
-    switch (x) {
-        case fieldWidth:
-            difficulty === "Easy" ? (x = 0) : setGameState("end");
-            break;
-        case -1:
-            difficulty === "Easy" ? (x = fieldWidth - 1) : setGameState("end");
-            break;
-        default:
-            break;
-    }
+    const controlKeys = [
+        { name: "w", value: "up", locking: "down" },
+        { name: "a", value: "left", locking: "right" },
+        { name: "s", value: "down", locking: "up" },
+        { name: "d", value: "right", locking: "left" },
+    ];
 
-    switch (y) {
-        case fieldHeight:
-            difficulty === "Easy" ? (y = 0) : setGameState("end");
-            break;
-        case -1:
-            difficulty === "Easy" ? (y = fieldHeight - 1) : setGameState("end");
-            break;
-        default:
-            break;
+    const handleKeyDown = (event, direction) => {
+        controlKeys.forEach((key) => {
+            if (direction !== key.locking && event.key === key.name) {
+                moveFunction(key.value);
+                setDirection(key.value);
+                moveHead();
+            }
+        });
+    };
+
+    onkeydown = (event) => handleKeyDown(event, direction);
+    moveFunction(direction);
+
+    if (difficulty === "Easy") {
+        switch (x) {
+            case fieldWidth:
+                x = 0;
+                break;
+            case -1:
+                x = fieldWidth - 1;
+                break;
+
+            default:
+                break;
+        }
+
+        switch (y) {
+            case fieldHeight:
+                y = 0;
+                break;
+            case -1:
+                y = fieldHeight - 1;
+                break;
+
+            default:
+                break;
+        }
+    } else {
+        if (x === fieldWidth + 1 || x === -2 || y === fieldHeight + 1 || y === -2) setGameState("end");
     }
 
     setSnakeHead({ x: x, y: y });
